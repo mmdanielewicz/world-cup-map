@@ -15,7 +15,7 @@ function App() {
     : []
 
   return (
-    <div>
+    <>
         <div className="header">
           <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" />
         </div>
@@ -35,7 +35,7 @@ function App() {
         </div>
 
 
-    </div>
+    </>
   )
 }
 

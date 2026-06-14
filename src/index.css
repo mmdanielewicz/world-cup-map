@@ -43,10 +43,11 @@ body {
   max-width: 100%;
   margin: 0;
   text-align: center;
-  min-height: 100svh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 h1,
@@ -103,9 +104,16 @@ h1, h2 {
 }
 
 .header {
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
+  background-color: #0d0d0f;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.fifa-logo {
+  filter: invert(1);
+  width: 100%;
+  max-width: 600px;
+  height: auto;
 }
 
 .stadium-icon {
@@ -114,28 +122,26 @@ h1, h2 {
   line-height: 30px;
 }
 
-.fifa-logo {
-  filter: invert(1);
-  width: 100%;
-  max-width: 700px;
-  height: auto;
-}
 
 .main-layout {
   display: flex;
   gap: 0;
   position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .map-wrapper {
   flex: 1;
+  height: 100%;
   transition: flex 0.3s ease;
 }
 
 /* SIDE PANEL WITH STADIUM INFO */
 .side-panel {
   width: 0;
-  overflow: hidden;
+  overflow-y: auto;
   background: #0d0d0f;
   color: #fff;
   transition: width 0.3s ease;
@@ -244,4 +250,21 @@ h1, h2 {
 .match-status {
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+/* LIVE MATCHES */
+.match-card.live {
+  border: 2px solid #ec1c2e;
+}
+
+.live-badge {
+  display: inline-block;
+  background: #ec1c2e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
 }
