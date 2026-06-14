@@ -236,6 +236,13 @@ h1, h2 {
   margin-bottom: 6px;
 }
 
+.match-tags {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
 .match-score {
   color: #ec1c2e;
   font-size: 13px;

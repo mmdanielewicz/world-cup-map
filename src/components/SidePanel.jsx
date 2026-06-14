@@ -15,7 +15,6 @@ function SidePanel({ stadium, games, onClose }) {
     : []
 
 
-
     return (
         
         <div className={`side-panel ${stadium ? 'open' : ''}`}>
@@ -64,6 +63,26 @@ function SidePanel({ stadium, games, onClose }) {
                                         <span className="tbd-text">Teams TBD</span>
                                         )}
                                     </div>
+                                    <div className="match-tags">
+                                        <span className="group-tag">Group {game.group}</span>
+                                        <span className="matchday-tag">Matchday {game.matchday}</span>
+                                    </div>
+
+                                    {game.finished === "TRUE" && (game.home_scorers !== "null" || game.away_scorers !== "null") && (
+                                        <div className="scorers">
+                                        {game.home_scorers !== "null" && (
+                                            <p className="scorer-line">⚽ {formatScorers(game.home_scorers)}</p>
+                                        )}
+                                        {game.away_scorers !== "null" && (
+                                            <p className="scorer-line">⚽ {formatScorers(game.away_scorers)}</p>
+                                        )}
+                                        </div>
+                                    )}
+
+
+
+
+
                                     <div className="match-meta">
                                         <span>{game.local_date}</span>
                                         <span className="match-status">{game.time_elapsed}</span>
