@@ -3,6 +3,7 @@ import fifaLogo from './assets/fifa-banner.webp'
 import './App.css'
 import StadiumMap from './components/StadiumMap'
 import SidePanel from './components/SidePanel' 
+import { useGames } from './hooks/useGames'
 
 function App() {
   // keep track of which staidum is clicked on
@@ -26,7 +27,7 @@ function App() {
 
           <SidePanel 
             stadium={selectedStadium}
-            games={stadiumGames} 
+            games={games} 
             onClose={
               () => setSelectedStadium(null)
             } />

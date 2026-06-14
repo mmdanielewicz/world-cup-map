@@ -205,3 +205,44 @@ h1, h2 {
   font-size: 14px;
   text-align: left;
 }
+
+/* GAME STYLES */
+.teams {
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: left;
+}
+
+.match-card {
+  background: #1a1a1f;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.match-teams {
+  display: flex;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.match-score {
+  color: #ec1c2e;
+  font-size: 13px;
+  white-space: nowrap;
+  margin: 0 8px;
+}
+
+.match-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.match-status {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
