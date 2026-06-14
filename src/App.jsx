@@ -5,6 +5,9 @@ import StadiumMap from './components/StadiumMap'
 import SidePanel from './components/SidePanel' 
 import { useGames } from './hooks/useGames'
 import LiveBanner from './components/LiveBanner'
+import { useLottie } from 'lottie-react'
+import loadingAnimation from './assets/loading.json'
+console.log('loadingAnimation:', loadingAnimation)
 
 function App() {
   // keep track of which staidum is clicked on
@@ -14,6 +17,24 @@ function App() {
   const stadiumGames = selectedStadium
     ? games.filter(g => g.stadium_id === selectedStadium.apiStadiumId)
     : []
+
+  const { View } = useLottie({ animationData: loadingAnimation, loop: true })
+
+  if (loading) {
+    return (
+      <>
+        <div className="header">
+          <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" />
+          {/* if there's a live game going on, show it in header */}
+          <LiveBanner games={games} />
+        </div>
+
+        <div className="loading-screen">
+          <div style={{ width: 200, height: 200 }}>{View}</div>
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
