@@ -25,8 +25,6 @@ function App() {
       <>
         <div className="header">
           <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" />
-          {/* if there's a live game going on, show it in header */}
-          <LiveBanner games={games} />
         </div>
 
         <div className="loading-screen">
@@ -41,7 +39,7 @@ function App() {
         <div className="header">
           <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" />
           {/* if there's a live game going on, show it in header */}
-          <LiveBanner games={games} />
+          <LiveBanner games={games} onSelectStadium={setSelectedStadium} />
         </div>
 
         <div className="main-layout">
