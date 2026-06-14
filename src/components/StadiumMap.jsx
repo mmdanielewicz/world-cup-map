@@ -19,11 +19,12 @@ function MapController({ selectedStadium }) {
 
     useEffect(() => {
         if (selectedStadium) {
-        map.flyTo([selectedStadium.lat, selectedStadium.lng], 10, {
-            duration: 1.2,
-        });
+          map.flyTo([selectedStadium.lat, selectedStadium.lng], 10, { duration: 1.2 });
+          // go back to original zoom and position if clicked out of the stadium
+        } else {
+          map.flyTo([35, -97], 4, { duration: 1.2 });
         }
-    }, [selectedStadium, map]);
+      }, [selectedStadium, map]);
 
     return null;
 }
@@ -48,10 +49,10 @@ function StadiumMap({ onStadiumClick, selectedStadium }) {
                         onStadiumClick(stadium),
                 }}>
 
-                <Popup>
+                {/* <Popup>
                     <strong>{stadium.name}</strong><br />
                     {stadium.city}, {stadium.country}
-                </Popup>
+                </Popup> */}
             </Marker>
 
         ))}
