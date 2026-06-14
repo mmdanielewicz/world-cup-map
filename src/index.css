@@ -39,7 +39,7 @@ body {
 }
 
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
   margin: 0;
   text-align: center;
@@ -122,3 +122,86 @@ h1, h2 {
   height: auto;
 }
 
+.main-layout {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+
+.map-wrapper {
+  flex: 1;
+  transition: flex 0.3s ease;
+}
+
+/* SIDE PANEL WITH STADIUM INFO */
+.side-panel {
+  width: 0;
+  overflow: hidden;
+  background: #0d0d0f;
+  color: #fff;
+  transition: width 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.side-panel.open {
+  width: 360px;
+  padding: 24px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.panel-header {
+  margin-bottom: 24px;
+}
+
+.country-tag {
+  display: inline-block;
+  background: #ec1c2e;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.panel-header h2 {
+  color: #fff;
+  font-size: 28px;
+  margin: 0 0 4px;
+  text-align: left;
+}
+
+.panel-header .city {
+  color: #9ca3af;
+  font-size: 14px;
+  text-align: left;
+}
+
+.panel-section h3 {
+  color: #fff;
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #ec1c2e;
+  padding-bottom: 8px;
+}
+
+.placeholder-text {
+  color: #6b6375;
+  font-size: 14px;
+  text-align: left;
+}

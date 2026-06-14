@@ -1,4 +1,5 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect } from "react";
 import L from 'leaflet';
 import { stadiums } from '../data/stadiums';
 import stadiumIconImg from '../assets/stadium.png';
@@ -12,15 +13,33 @@ const stadiumIcon = L.icon({
     className: 'stadium-icon'
   })
 
+// control map view when clicked 
+function MapController({ selectedStadium }) {
+    const map = useMap();
+
+    useEffect(() => {
+        if (selectedStadium) {
+        map.flyTo([selectedStadium.lat, selectedStadium.lng], 10, {
+            duration: 1.2,
+        });
+        }
+    }, [selectedStadium, map]);
+
+    return null;
+}
+
+
 // leaflet map component
-function StadiumMap({ onStadiumClick }) {
+function StadiumMap({ onStadiumClick, selectedStadium }) {
   return (
-    <MapContainer center={[35, -97]} zoom={4} style={{ height: "800px", width: "100%" }}>
+    <MapContainer center={[30, -97]} zoom={4} style={{ height: "800px", width: "100%" }}>
         <TileLayer
         attribution='&copy; OpenStreetMap &copy; CARTO'
         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
 
+        {/* zoom to marker */}
+        <MapController selectedStadium={selectedStadium} />
         
         {stadiums.map((stadium) => (
             <Marker key={stadium.name} position={[stadium.lat, stadium.lng]} icon={stadiumIcon}

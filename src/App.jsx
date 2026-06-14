@@ -2,6 +2,7 @@ import { useState } from 'react'
 import fifaLogo from './assets/fifa-banner.webp'
 import './App.css'
 import StadiumMap from './components/StadiumMap'
+import SidePanel from './components/SidePanel' 
 
 function App() {
   // keep track of which staidum is clicked on
@@ -9,16 +10,24 @@ function App() {
 
   return (
     <div>
-      <div className="container">
-
         <div className="header">
           <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" />
         </div>
 
-        <pre>{JSON.stringify(selectedStadium, null, 2)}</pre>
+        <div className="main-layout">
+          <div className="map-wrapper">
+            <StadiumMap onStadiumClick={setSelectedStadium} selectedStadium={selectedStadium} />
+          </div>
 
-        <StadiumMap onStadiumClick={setSelectedStadium}/>
-      </div>
+          <SidePanel 
+            stadium={selectedStadium} 
+            onClose={
+              () => setSelectedStadium(null)
+            } />
+
+        </div>
+
+
     </div>
   )
 }
