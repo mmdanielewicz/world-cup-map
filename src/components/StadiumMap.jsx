@@ -1,11 +1,14 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from 'leaflet';
 import { stadiums } from '../data/stadiums';
+import stadiumIconImg from '../assets/stadium.png';
 
-const stadiumIcon = L.divIcon({
-    html: '🏟️',
-    className: 'stadium-icon',
-    iconSize: [30, 30],
+const stadiumIcon = L.icon({
+    iconUrl: stadiumIconImg,
+    iconSize: [32, 32],      
+    iconAnchor: [16, 32],    
+    popupAnchor: [0, -32], 
+    className: 'stadium-icon'
   })
 
 function StadiumMap() {

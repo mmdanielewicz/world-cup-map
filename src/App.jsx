@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import fifaLogo from './assets/fifa-banner.webp'
 import './App.css'
 import StadiumMap from './components/StadiumMap'
 
@@ -11,7 +9,10 @@ function App() {
   return (
     <div>
       <div className="container">
-        <h1>2026 FIFA World Cup Map</h1>
+        <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" 
+          style={{ width: '100%', maxWidth: '700px', height: 'auto' }}/>
+
+
         <StadiumMap />
       </div>
     </div>
