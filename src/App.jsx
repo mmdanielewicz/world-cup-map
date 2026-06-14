@@ -4,6 +4,7 @@ import './App.css'
 import StadiumMap from './components/StadiumMap'
 import SidePanel from './components/SidePanel' 
 import { useGames } from './hooks/useGames'
+import LiveBanner from './components/LiveBanner'
 
 function App() {
   // keep track of which staidum is clicked on
@@ -18,6 +19,8 @@ function App() {
     <>
         <div className="header">
           <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" />
+          {/* if there's a live game going on, show it in header */}
+          <LiveBanner games={games} />
         </div>
 
         <div className="main-layout">

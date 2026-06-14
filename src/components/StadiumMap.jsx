@@ -27,7 +27,7 @@ function MapController({ selectedStadium }) {
             } else {
                 map.flyTo([35, -97], 4, { duration: 1.2 });
             }
-          }, 50); // small delay so the panel's width transition has started
+          }, 250); // small delay so the panel's width transition has started
       
           return () => clearTimeout(timer);
         }, [selectedStadium, map]);
