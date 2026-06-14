@@ -1,11 +1,17 @@
 function SidePanel({ stadium, games, onClose }) {
 
+    const isLive = (game) => game.finished === "FALSE" && game.time_elapsed !== "scheduled"
     // sort games by date and filter by the stadium
+    // LIVE AT TOP
     const stadiumGames = stadium
-        ? games
-            .filter(g => g.stadium_id === stadium.apiStadiumId)
-            .sort((a, b) => new Date(a.local_date) - new Date(b.local_date))
-        : []
+    ? games
+        .filter(g => g.stadium_id === stadium.apiStadiumId)
+        .sort((a, b) => {
+            if (isLive(a) && !isLive(b)) return -1
+            if (!isLive(a) && isLive(b)) return 1
+            return new Date(a.local_date) - new Date(b.local_date)
+        })
+    : []
 
 
 
@@ -40,9 +46,11 @@ function SidePanel({ stadium, games, onClose }) {
                                     <div className="match-teams">
                                         {hasTeams ? (
                                         <>
+                                            
                                             <span>{game.home_team_name_en}</span>
+                                            {/* show score for live & finished games */}
                                             <span className="match-score">
-                                            {game.finished === "TRUE"
+                                                {game.finished === "TRUE" || isLive(game)
                                                 ? `${game.home_score} - ${game.away_score}`
                                                 : "vs"}
                                             </span>
