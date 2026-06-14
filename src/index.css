@@ -109,3 +109,12 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+/* STADIUM MAP CSS */
+
+.stadium-icon {
+  font-size: 30px;
+  text-align: center;
+  line-height: 30px;
+}
