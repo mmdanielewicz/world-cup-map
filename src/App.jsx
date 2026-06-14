@@ -7,6 +7,11 @@ import SidePanel from './components/SidePanel'
 function App() {
   // keep track of which staidum is clicked on
   const [selectedStadium, setSelectedStadium] = useState(null)
+  // fetch games data from free worldcup26 github API
+  const { games, loading } = useGames()
+  const stadiumGames = selectedStadium
+    ? games.filter(g => g.stadium_id === selectedStadium.apiStadiumId)
+    : []
 
   return (
     <div>
@@ -20,7 +25,8 @@ function App() {
           </div>
 
           <SidePanel 
-            stadium={selectedStadium} 
+            stadium={selectedStadium}
+            games={stadiumGames} 
             onClose={
               () => setSelectedStadium(null)
             } />
