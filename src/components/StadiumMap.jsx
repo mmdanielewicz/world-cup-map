@@ -3,14 +3,25 @@ import { useEffect } from "react";
 import L from 'leaflet';
 import { stadiums } from '../data/stadiums';
 import stadiumIconImg from '../assets/stadium.png';
+import { isLikelyLive } from '../utils/gameStatus';
 
 // custom stadium marker on map
 const stadiumIcon = L.icon({
     iconUrl: stadiumIconImg,
-    iconSize: [48, 48],      
-    iconAnchor: [16, 32],    
-    popupAnchor: [0, -32], 
-    className: 'stadium-icon'
+    iconSize: [48, 48],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
+})
+  
+const liveStadiumIcon = L.divIcon({
+    html: `<div class="live-marker-wrapper">
+             <span class="live-marker-badge">LIVE</span>
+             <img src="${stadiumIconImg}" class="live-marker-icon" />
+           </div>`,
+    className: '',
+    iconSize: [48, 64],
+    iconAnchor: [24, 48],
+    popupAnchor: [0, -48],
   })
 
 // control map view when clicked 
@@ -37,7 +48,7 @@ function MapController({ selectedStadium }) {
 
 
 // leaflet map component
-function StadiumMap({ onStadiumClick, selectedStadium }) {
+function StadiumMap({ onStadiumClick, selectedStadium, games }) {
   return (
     <MapContainer center={[30, -97]} zoom={4} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }}>
         <TileLayer
@@ -48,20 +59,18 @@ function StadiumMap({ onStadiumClick, selectedStadium }) {
         {/* zoom to marker */}
         <MapController selectedStadium={selectedStadium} />
         
-        {stadiums.map((stadium) => (
-            <Marker key={stadium.name} position={[stadium.lat, stadium.lng]} icon={stadiumIcon}
-                eventHandlers={{
-                    click: () => 
-                        onStadiumClick(stadium),
-                }}>
+        {stadiums.map((stadium) => {
+            const hasLive = games.some(g => g.stadium_id === stadium.apiStadiumId && isLikelyLive(g))
 
-                {/* <Popup>
-                    <strong>{stadium.name}</strong><br />
-                    {stadium.city}, {stadium.country}
-                </Popup> */}
-            </Marker>
-
-        ))}
+            return (
+            <Marker
+                key={stadium.name}
+                position={[stadium.lat, stadium.lng]}
+                icon={hasLive ? liveStadiumIcon : stadiumIcon}
+                eventHandlers={{ click: () => onStadiumClick(stadium) }}
+            />
+            )
+        })}
 
     
     </MapContainer>

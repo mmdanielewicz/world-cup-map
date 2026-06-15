@@ -1,6 +1,7 @@
 import { isLikelyLive } from '../utils/gameStatus'
+import { formatScorers } from '../utils/formatScorers'
 
-function SidePanel({ stadium, games, onClose }) {
+function SidePanel({ stadium, games, onClose, onGameClick }) {
 
     // sort games by date and filter by the stadium
     // LIVE AT TOP
@@ -43,7 +44,7 @@ function SidePanel({ stadium, games, onClose }) {
                             const live = isLikelyLive(game)
 
                             return (
-                                <div key={game.id} className={`match-card ${live ? 'live' : ''}`}>
+                                <div key={game.id} className={`match-card ${live ? 'live' : ''}`} onClick={() => onGameClick(game)}>
                                     {live && <span className="live-badge">LIVE</span>}
 
                                     <div className="match-teams">

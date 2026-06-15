@@ -8,17 +8,22 @@ import LiveBanner from './components/LiveBanner'
 import { useLottie } from 'lottie-react'
 import loadingAnimation from './assets/loading.json'
 console.log('loadingAnimation:', loadingAnimation)
+import { useTeams } from './hooks/useTeams'
+import MatchModal from './components/MatchModal'
+import TodayBanner from './components/TodayBanner'
 
 function App() {
   // keep track of which staidum is clicked on
   const [selectedStadium, setSelectedStadium] = useState(null)
+  const [selectedGame, setSelectedGame] = useState(null)
   // fetch games data from free worldcup26 github API
   const { games, loading } = useGames()
   const stadiumGames = selectedStadium
     ? games.filter(g => g.stadium_id === selectedStadium.apiStadiumId)
     : []
-
+  const { teams } = useTeams()
   const { View } = useLottie({ animationData: loadingAnimation, loop: true })
+
 
   if (loading) {
     return (
@@ -40,11 +45,15 @@ function App() {
           <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" />
           {/* if there's a live game going on, show it in header */}
           <LiveBanner games={games} onSelectStadium={setSelectedStadium} />
+          <TodayBanner games={games} onSelectStadium={setSelectedStadium} />
         </div>
 
         <div className="main-layout">
           <div className="map-wrapper">
-            <StadiumMap onStadiumClick={setSelectedStadium} selectedStadium={selectedStadium} />
+            <StadiumMap 
+            onStadiumClick={setSelectedStadium} 
+            selectedStadium={selectedStadium} 
+            games={games}/>
           </div>
 
           <SidePanel 
@@ -52,7 +61,16 @@ function App() {
             games={games} 
             onClose={
               () => setSelectedStadium(null)
-            } />
+            } 
+            onGameClick={setSelectedGame}
+          />
+
+          <MatchModal
+            game={selectedGame}
+            teams={teams}
+            stadium={selectedStadium}
+            onClose={() => setSelectedGame(null)}
+          />
 
         </div>
 
