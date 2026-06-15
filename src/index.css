@@ -7,10 +7,11 @@
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #00d2b4;      /* teal/green - already have this */
-  --accent-2: #ec1c2e;    /* red */
-  --accent-3: #ffd100;    /* yellow/gold */
-  --accent-4: #6a4c93;    /* purple */
+  --accent-2: #e92064;    /* red */
+  --accent-3: #ecff43;    /* yellow/gold */
+  --accent-4: #6100eb;    /* purple */
   --accent-5: #1e88e5;    /* blue */
+  --accent-6: #004c3e;    /* dark teal */
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
@@ -106,10 +107,50 @@ h1, h2 {
   font-weight: 700;
 }
 
+
 .header {
   background-color: #16161a;
   padding: 20px;
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.header {
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: var(--accent);
+  transform: rotate(25deg);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -90px;
+  left: -150px;
+  width: 350px;
+  height: 350px;
+  background: var(--accent-4);
+  transform: rotate(31deg);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header > * {
+  position: relative;
+  z-index: 1;
 }
 
 .fifa-logo {
@@ -203,7 +244,7 @@ h1, h2 {
 
 .country-tag {
   display: inline-block;
-  background: var(--accent);
+  background: var(--accent-2);
   color: #fff;
   font-size: 20px;
   font-weight: 1000;
@@ -255,6 +296,14 @@ h1, h2 {
   padding: 12px 14px;
   margin-bottom: 10px;
   text-align: left;
+  position: relative;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.match-card:hover {
+  border-left-color: var(--accent-3);
+  transform: translateX(2px);
 }
 
 .match-teams {
@@ -262,6 +311,7 @@ h1, h2 {
   font-weight: 700;
   font-size: 14px;
   margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
 .match-tags {
@@ -272,7 +322,7 @@ h1, h2 {
 }
 
 .match-score {
-  color: #ec1c2e;
+  color: var(--accent-2);
   font-size: 13px;
   white-space: nowrap;
   margin: 0 8px;
@@ -288,6 +338,16 @@ h1, h2 {
 .match-status {
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.scorers {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.scorer-line {
+  margin: 2px 0;
 }
 
 /* LIVE MATCHES */
@@ -314,6 +374,7 @@ h1, h2 {
   gap: 16px;
   margin-top: 12px;
   flex-wrap: wrap;
+  z-index: 1001;
 }
 
 .live-banner-item {
@@ -328,6 +389,7 @@ h1, h2 {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  z-index: 1001;
 }
 
 .live-banner-label {

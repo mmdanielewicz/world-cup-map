@@ -1,4 +1,5 @@
 import { isLikelyLive } from '../utils/gameStatus'
+import { formatScorers } from '../utils/formatScorers'
 
 function SidePanel({ stadium, games, onClose, onGameClick }) {
 
