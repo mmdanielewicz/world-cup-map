@@ -11,6 +11,8 @@ console.log('loadingAnimation:', loadingAnimation)
 import { useTeams } from './hooks/useTeams'
 import MatchModal from './components/MatchModal'
 import TodayBanner from './components/TodayBanner'
+import { useNews } from './hooks/useNews'
+import NewsBanner from './components/NewsBanner'
 
 function App() {
   // keep track of which staidum is clicked on
@@ -23,6 +25,7 @@ function App() {
     : []
   const { teams } = useTeams()
   const { View } = useLottie({ animationData: loadingAnimation, loop: true })
+  const { articles } = useNews()
 
 
   if (loading) {
@@ -46,6 +49,7 @@ function App() {
           {/* if there's a live game going on, show it in header */}
           <LiveBanner games={games} onSelectStadium={setSelectedStadium} />
           <TodayBanner games={games} onSelectStadium={setSelectedStadium} />
+          <NewsBanner articles={articles} />
         </div>
 
         <div className="main-layout">
