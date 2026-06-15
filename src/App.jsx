@@ -10,6 +10,7 @@ import loadingAnimation from './assets/loading.json'
 console.log('loadingAnimation:', loadingAnimation)
 import { useTeams } from './hooks/useTeams'
 import MatchModal from './components/MatchModal'
+import TodayBanner from './components/TodayBanner'
 
 function App() {
   // keep track of which staidum is clicked on
@@ -44,6 +45,7 @@ function App() {
           <img src={fifaLogo} alt="FIFA Logo" className="fifa-logo" />
           {/* if there's a live game going on, show it in header */}
           <LiveBanner games={games} onSelectStadium={setSelectedStadium} />
+          <TodayBanner games={games} onSelectStadium={setSelectedStadium} />
         </div>
 
         <div className="main-layout">
