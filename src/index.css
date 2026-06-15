@@ -141,6 +141,34 @@ h1, h2 {
   transition: flex 0.3s ease;
 }
 
+.live-marker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.live-marker-badge {
+  background: var(--accent-2);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  animation: pulse-badge 1.5s infinite;
+}
+
+.live-marker-icon {
+  width: 48px;
+  height: 48px;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
 /* SIDE PANEL WITH STADIUM INFO */
 .side-panel {
   width: 0;
@@ -175,10 +203,10 @@ h1, h2 {
 
 .country-tag {
   display: inline-block;
-  background: #ec1c2e;
+  background: var(--accent);
   color: #fff;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 1000;
   letter-spacing: 1px;
   text-transform: uppercase;
   padding: 4px 10px;

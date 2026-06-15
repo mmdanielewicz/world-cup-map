@@ -48,7 +48,10 @@ function App() {
 
         <div className="main-layout">
           <div className="map-wrapper">
-            <StadiumMap onStadiumClick={setSelectedStadium} selectedStadium={selectedStadium} />
+            <StadiumMap 
+            onStadiumClick={setSelectedStadium} 
+            selectedStadium={selectedStadium} 
+            games={games}/>
           </div>
 
           <SidePanel 
