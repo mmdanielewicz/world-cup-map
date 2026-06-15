@@ -330,3 +330,100 @@ h1, h2 {
   justify-content: center;
   background: var(--bg);
 }
+
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #1a1a1f;
+  border-radius: 16px;
+  padding: 32px;
+  width: 90%;
+  max-width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  color: #fff;
+  text-align: left;
+}
+
+.modal-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.modal-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.modal-team {
+  flex: 1;
+  text-align: center;
+}
+
+.team-flag {
+  width: 64px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.team-name {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.fifa-code {
+  color: var(--text);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.modal-score {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent-2);
+  white-space: nowrap;
+}
+
+.modal-scorers, .modal-venue {
+  margin-bottom: 16px;
+}
+
+.modal-scorers h3, .modal-venue h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.venue-meta {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.modal-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text);
+  border-top: 1px solid #2a2a30;
+  padding-top: 12px;
+}
